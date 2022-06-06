@@ -1,0 +1,46 @@
+name: "Enhancement/Feature Request"
+description: "Submit a request for either improvement to an existing feature, or implementation of a new feature"
+labels: ["enhancement"]
+body:
+  - type: checkboxes
+    id: prereqs
+    attributes:
+      label: Prerequisites
+      options:
+        - label: "I agree to follow the [rules for contributors](../blob/main/doc/CONTRIBUTING.md#rules)."
+          required: true
+        - label: "I have read [How to Request an Enhancement or Feature](../blob/main/doc/CONTRIBUTING.md#how-to-request-an-enhancement-or-feature)."
+          required: true
+        - label: "I have searched [existing issues](./), and found none matching this request."
+          required: true
+        - label: "I have checked the latest version of the template, and found that this enhancement/feature is not implemented."
+          required: true
+  - type: textarea
+    id: desired-outcome
+    attributes:
+      label: Desired Outcome
+      description: "Describe what you will be able to accomplish or solve if this enhancement/feature is implemented, and why that is important to you."
+      placeholder: "I will..., which is important to me because..."
+    validations:
+      required: true
+  - type: textarea
+    id: en-feat-desc
+    attributes:
+      label: Requested Enhancement/Feature
+      description: "Describe specifically what you want improved or implemented."
+      placeholder: "The... should..."
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: "Describe alternatives which you have considered, and why you believe they are inferior to the requested enhancement/feature."
+      placeholder: "* ...\n\n* ..."
+    validations:
+      required: true
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional Info
+      description: "Provide any other info or context which you believe could be helpful for reviewing your request."

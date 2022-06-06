@@ -1,0 +1,61 @@
+name: Bug Report
+description: Submit a report on a crash, an unexpected error, or something not working otherwise
+labels: ["bug"]
+body:
+  - type: checkboxes
+    id: prereqs
+    attributes:
+      label: Prerequisites
+      options:
+        - label: "I agree to follow the [rules for contributors](../blob/main/doc/CONTRIBUTING.md#rules)."
+          required: true
+        - label: "I have read [How to Report a Bug](../blob/main/doc/CONTRIBUTING.md#how-to-report-a-bug)."
+          required: true
+        - label: "I have searched [existing issues](./), and found none matching this bug."
+          required: true
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: "Describe the way the software should have behaved."
+      placeholder: "When..., the... should..."
+    validations:
+      required: true
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: Actual Behavior
+      description: "Describe the buggy behavior that happened instead. Copy and paste error messages, if any."
+      placeholder: "The... did...\n\nThe following error message was displayed:\n```\n...\n```"
+    validations:
+      required: true
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: "Describe the shortest procedure to reproduce the bug. If possible, include a link to a project that demonstrates the bug."
+      placeholder: "1. Create a new project from the template\n2. ...\n...\n\nHere's a project that demonstrates the bug: https://github.com/..."
+    validations:
+      required: true
+  - type: input
+    id: template-ver
+    attributes:
+      label: Template Version
+      description: "If the bug occurred while generating a project, copy and paste the version from the template's `project.clj`. Otherwise, copy and paste the value of `:xilk.template/version` from the generated project's `project.clj`."
+    validations:
+      required: true
+  - type: input
+    id: lein-ver
+    attributes:
+      label: Lein Version
+      description: "If the bug occurs when creating the project or running a lein task, copy and paste the output from running `lein --version`."
+  - type: textarea
+    id: other-deps-ver
+    attributes:
+      label: Other Dependencies & Versions
+      description: List any other dependencies which may be related to the bug, along with their versions.
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional Info
+      description: "Provide any other info or context which you believe could be helpful for identifying and fixing the bug."
