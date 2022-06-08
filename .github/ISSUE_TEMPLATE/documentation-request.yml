@@ -1,5 +1,5 @@
-name: "Documentation Request"
-description: "Submit a request for improvement to documentation"
+name: Documentation Request
+description: "Submit a request for improvement to documentation."
 labels: ["documentation"]
 body:
   - type: checkboxes

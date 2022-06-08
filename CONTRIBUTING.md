@@ -23,9 +23,10 @@ make the process smooth. And smooth is fast. Thanks again!
     These behaviors are unacceptable here, and will lead to your being blocked.
 
 * Be considerate.
-  - Use [Stack Overflow](https://stackoverflow.com/) if you have a question
-    about the software, not GitHub issues. GitHub issues are for bug reports
-    and enhancement/feature requests only.
+  - For general help, specific questions, sharing ideas, etc., please use
+    [Discussions](https://github.com/xilk-org/xilk-xp-web-app-template/discussions),
+    instead of opening an issue. GitHub Issues are for bug reports and
+    enhancement/feature requests only.
   - Prevent extra work by searching for existing
     [issues](https://github.com/xilk-org/xilk-xp-web-app-template/issues)
     before creating a new one.
@@ -46,17 +47,17 @@ make the process smooth. And smooth is fast. Thanks again!
     and [Conventional Commits](https://www.conventionalcommits.org/).
   - Keep your change, if any, focused to only the corresponding issue.
 
-## How to Submit an Issue
+## How to Open an Issue
 
 1. Search [issues](https://github.com/xilk-org/xilk-xp-web-app-template/issues)
-   to see if anyone else has already submitted something similar.
+   to see if anyone else has already opened something similar.
 2. If so, add a comment ONLY if you have additional relevant details to
    contribute; otherwise, feel free to add a
    [reaction](https://github.blog/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/)
    to any comments to show your interest/support. Your maintainer thanks you for
    not waking him up with redundant comment/issue notifications. 🤗
 
-   If not, then please submit a
+   If not, then please open a
    [new issue](https://github.com/xilk-org/xilk-xp-web-app-template/issues/new/choose)
    using the appropriate template.
 3. Wait up to one week for the maintainer to respond, although a response within
@@ -66,18 +67,18 @@ make the process smooth. And smooth is fast. Thanks again!
 
 ## How to Report a Bug
 
-Follow the steps in [How to Submit an Issue](#how-to-submit-an-issue), using
+Follow the steps in [How to Open an Issue](#how-to-open-an-issue), using
 the Bug Report template if the bug hasn't yet been reported.
 
 ## How to Request an Enhancement or Feature
 
-Follow the steps in [How to Submit an Issue](#how-to-submit-an-issue), using
+Follow the steps in [How to Open an Issue](#how-to-open-an-issue), using
 the Enhancement/Feature Request template if something similar hasn't been
 requested.
 
 ## How to Request an Improvement to Documentation
 
-Follow the steps in [How to Submit an Issue](#how-to-submit-an-issue), using
+Follow the steps in [How to Open an Issue](#how-to-open-an-issue), using
 the Documentation Request template if something similar hasn't been requested.
 
 ## How to Contribute a Change (code, docs, etc.)

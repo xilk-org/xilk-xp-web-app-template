@@ -1,5 +1,5 @@
 name: Bug Report
-description: Submit a report on a crash, an unexpected error, or something not working otherwise
+description: "Submit a report on a crash, an unexpected error, or something not working otherwise."
 labels: ["bug"]
 body:
   - type: checkboxes

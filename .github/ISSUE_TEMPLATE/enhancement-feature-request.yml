@@ -1,5 +1,5 @@
 name: "Enhancement/Feature Request"
-description: "Submit a request for either improvement to an existing feature, or implementation of a new feature"
+description: "Submit a request for either improvement to an existing feature, or implementation of a new feature."
 labels: ["enhancement"]
 body:
   - type: checkboxes
