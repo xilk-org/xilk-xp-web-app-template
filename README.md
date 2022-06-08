@@ -37,7 +37,7 @@ coverage, addressing gaps in current features, and starting work on new
 features, there are two assumptions that must first be tested:
 
 * Developers find these patterns and tools valuable,
-  [contributing](doc/CONTRIBUTING.md) to and starting to form a community
+  [contributing](CONTRIBUTING.md) to and starting to form a community
   around the project.
 * The current feature API's accommodate developers' needs well, without
   significant rework.
@@ -49,16 +49,17 @@ features, there are two assumptions that must first be tested:
 Colocate HTML, CSS, strings, and controller code in single-file screens and
 components (inspired by
 [Vue's Single File Components](https://vuejs.org/guide/scaling-up/sfc.html)).
-Locally scope string and style rule names using auto-resolved keywords. Apply
+Locally scope CSS rule and string names using auto-resolved keywords. Apply
 previous web development experience using common idioms like `props` and nested
 components.
 
 ```clj
 ;; Example screen
 (ns my-project.example.hello-world-screen
-  (:require [my-project.app.default-theme.theme :as theme]
-            [my-project.example.sign-in-form-comp :refer [sign-in-form]]
-            [xilk.xp.web-app.ui :as x])))
+  (:require
+   [my-project.app.default-theme.theme :as theme]
+   [my-project.example.sign-in-form-comp :refer [sign-in-form]]
+   [xilk.xp.web-app.ui :as x])))
 
 (defn html [props]
   (x/html
@@ -92,10 +93,11 @@ components.
 ```clj
 ;; Example component
 (ns my-project.example.sign-in-form-comp
-  (:require [my-project.example.password-input-comp :refer [password-input]]
-            [my-project.example.submit-button-comp :refer [submit-button]]
-            [my-project.example.username-input-comp :refer [username-input]]
-            [xilk.xp.web-app.ui :as x])))
+  (:require
+   [my-project.example.password-input-comp :refer [password-input]]
+   [my-project.example.submit-button-comp :refer [submit-button]]
+   [my-project.example.username-input-comp :refer [username-input]]
+   [xilk.xp.web-app.ui :as x])))
 
 (defn sign-in-form [props]
   (x/html
@@ -122,13 +124,14 @@ explicitly defined (no magic) — automatically when
 ```clj
 ;; Example module-api, generated and updated for each module
 (ns my-project.example.module-api
-  (:require [my-project.example.hello-world-screen :as hello-world-screen]
-            [my-project.example.password-input-comp :as password-input-comp]
-            [my-project.example.sign-in-form-comp :as sign-in-form-comp]
-            [my-project.example.submit-button-comp :as submit-button-comp]
-            [my-project.example.username-input-comp :as username-input-comp]))
+  (:require
+   [my-project.example.hello-world-screen :as hello-world-screen]
+   [my-project.example.password-input-comp :as password-input-comp]
+   [my-project.example.sign-in-form-comp :as sign-in-form-comp]
+   [my-project.example.submit-button-comp :as submit-button-comp]
+   [my-project.example.username-input-comp :as username-input-comp]))
 
-;; Data is processed and used by app.router, app.strings, and app.stylesheets
+;; Data is processed and used by app.routes, app.strings, and app.stylesheets
 
 (def routes
   [["/" {:name :example/hello-world
@@ -152,7 +155,7 @@ explicitly defined (no magic) — automatically when
 ### Theme Pattern
 
 Wrap screen content in layouts containing dynamically rendered sections like
-headers and footers, applying global style including light/dark color schemes.
+headers and footers, applying global CSS including light/dark color schemes.
 Share themes across projects or with other developers. **NOTE: emerging feature,
 half-baked, very unstable API's.**
 
@@ -241,7 +244,7 @@ across projects or with other developers.
 
 ## Contributing
 
-See [CONTRIBUTING.md](doc/CONTRIBUTING.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
