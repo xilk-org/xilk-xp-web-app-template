@@ -11,8 +11,7 @@
    [garden.units :refer [px]]
    [xilk.xp.web-app.ui :as x]))
 
-(defn " comp-kw-name "
-  [props]
+(defn " comp-kw-name " [props]
   (x/html
    [:div {:class ::container}
     [:p (::" comp-kw-name " props)]

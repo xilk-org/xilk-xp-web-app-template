@@ -18,7 +18,7 @@
 
 (def strings
   (merge
-   nil))"))
+   nil))\n"))
 
 (defn create-data
   [{:keys [_module-api-ns] :as module-api-params}]

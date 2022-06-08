@@ -19,7 +19,7 @@
           :unit/libspec ['{{root-ns}}.app.comps.cmp-comp :as 'cmp-comp]
           :unit/path "src/{{root-ns-path}}/app/comps/cmp_comp.clj"
           :unit/src
-          "(ns {{root-ns}}.app.comps.cmp-comp\n  \"Cmp component.\"\n  (:require\n   [garden.units :refer [px]]\n   [xilk.xp.web-app.ui :as x]))\n\n(defn cmp\n  [props]\n  (x/html\n   [:div {:class ::container}\n    [:p (::cmp props)]\n    [:p (::FIXME props)]]))\n\n(def css\n  (x/css\n   [::container {:border [[(px 2) :solid]]}]))\n\n(def strings\n  {::cmp \"Cmp\"\n   ::FIXME \"FIXME\"})\n"
+          "(ns {{root-ns}}.app.comps.cmp-comp\n  \"Cmp component.\"\n  (:require\n   [garden.units :refer [px]]\n   [xilk.xp.web-app.ui :as x]))\n\n(defn cmp [props]\n  (x/html\n   [:div {:class ::container}\n    [:p (::cmp props)]\n    [:p (::FIXME props)]]))\n\n(def css\n  (x/css\n   [::container {:border [[(px 2) :solid]]}]))\n\n(def strings\n  {::cmp \"Cmp\"\n   ::FIXME \"FIXME\"})\n"
           :unit/strings-sym 'cmp-comp/strings
           :unit/css-sym 'cmp-comp/css
           :unit/template-fn basic-comp/create-data}
@@ -34,7 +34,7 @@
           :unit/libspec ['{{root-ns}}.mod-1.cmp-comp :as 'cmp-comp]
           :unit/path "src/{{root-ns-path}}/mod_1/cmp_comp.clj"
           :unit/src
-          "(ns {{root-ns}}.mod-1.cmp-comp\n  \"Cmp component.\"\n  (:require\n   [garden.units :refer [px]]\n   [xilk.xp.web-app.ui :as x]))\n\n(defn cmp\n  [props]\n  (x/html\n   [:div {:class ::container}\n    [:p (::cmp props)]\n    [:p (::FIXME props)]]))\n\n(def css\n  (x/css\n   [::container {:border [[(px 2) :solid]]}]))\n\n(def strings\n  {::cmp \"Cmp\"\n   ::FIXME \"FIXME\"})\n"
+          "(ns {{root-ns}}.mod-1.cmp-comp\n  \"Cmp component.\"\n  (:require\n   [garden.units :refer [px]]\n   [xilk.xp.web-app.ui :as x]))\n\n(defn cmp [props]\n  (x/html\n   [:div {:class ::container}\n    [:p (::cmp props)]\n    [:p (::FIXME props)]]))\n\n(def css\n  (x/css\n   [::container {:border [[(px 2) :solid]]}]))\n\n(def strings\n  {::cmp \"Cmp\"\n   ::FIXME \"FIXME\"})\n"
           :unit/strings-sym 'cmp-comp/strings
           :unit/css-sym 'cmp-comp/css
           :unit/template-fn basic-comp/create-data}
@@ -96,7 +96,7 @@
             :unit/libspec ['{{root-ns}}.mod.cmp-comp :as 'cmp-comp]
             :unit/path "src/{{root-ns-path}}/mod/cmp_comp.clj"
             :unit/src
-            "(ns {{root-ns}}.mod.cmp-comp\n  \"Cmp component.\"\n  (:require\n   [garden.units :refer [px]]\n   [xilk.xp.web-app.ui :as x]))\n\n(defn cmp\n  [props]\n  (x/html\n   [:div {:class ::container}\n    [:p (::cmp props)]\n    [:p (::FIXME props)]]))\n\n(def css\n  (x/css\n   [::container {:border [[(px 2) :solid]]}]))\n\n(def strings\n  {::cmp \"Cmp\"\n   ::FIXME \"FIXME\"})\n",
+            "(ns {{root-ns}}.mod.cmp-comp\n  \"Cmp component.\"\n  (:require\n   [garden.units :refer [px]]\n   [xilk.xp.web-app.ui :as x]))\n\n(defn cmp [props]\n  (x/html\n   [:div {:class ::container}\n    [:p (::cmp props)]\n    [:p (::FIXME props)]]))\n\n(def css\n  (x/css\n   [::container {:border [[(px 2) :solid]]}]))\n\n(def strings\n  {::cmp \"Cmp\"\n   ::FIXME \"FIXME\"})\n"
             :unit/strings-sym 'cmp-comp/strings
             :unit/css-sym 'cmp-comp/css
             :unit/template-fn basic-comp/create-data}]}
@@ -122,7 +122,7 @@
             :unit/libspec ['{{root-ns}}.mod.cmp-comp :as 'cmp-comp]
             :unit/path "src/{{root-ns-path}}/mod/cmp_comp.clj"
             :unit/src
-            "(ns {{root-ns}}.mod.cmp-comp\n  \"Cmp component.\"\n  (:require\n   [garden.units :refer [px]]\n   [xilk.xp.web-app.ui :as x]))\n\n(defn cmp\n  [props]\n  (x/html\n   [:div {:class ::container}\n    [:p (::cmp props)]\n    [:p (::FIXME props)]]))\n\n(def css\n  (x/css\n   [::container {:border [[(px 2) :solid]]}]))\n\n(def strings\n  {::cmp \"Cmp\"\n   ::FIXME \"FIXME\"})\n"
+            "(ns {{root-ns}}.mod.cmp-comp\n  \"Cmp component.\"\n  (:require\n   [garden.units :refer [px]]\n   [xilk.xp.web-app.ui :as x]))\n\n(defn cmp [props]\n  (x/html\n   [:div {:class ::container}\n    [:p (::cmp props)]\n    [:p (::FIXME props)]]))\n\n(def css\n  (x/css\n   [::container {:border [[(px 2) :solid]]}]))\n\n(def strings\n  {::cmp \"Cmp\"\n   ::FIXME \"FIXME\"})\n"
             :unit/strings-sym 'cmp-comp/strings
             :unit/css-sym 'cmp-comp/css
             :unit/template-fn basic-comp/create-data}]}
@@ -270,7 +270,7 @@
           :module.api/strings-sym 'about/strings
           :module.api/css-sym 'about/css
           :module.api/src
-          "(ns {{root-ns}}.about.module-api\n  \"The API that app infrastructure uses to integrate this module.\n  NOTE: Xilk Web App REPL tools automatically update this file.\")\n\n(def routes\n  nil)\n\n(def css\n  (str\n   nil))\n\n(def strings\n  (merge\n   nil))"
+          "(ns {{root-ns}}.about.module-api\n  \"The API that app infrastructure uses to integrate this module.\n  NOTE: Xilk Web App REPL tools automatically update this file.\")\n\n(def routes\n  nil)\n\n(def css\n  (str\n   nil))\n\n(def strings\n  (merge\n   nil))\n"
           :module/unit-defs [{:FAKE 1, :module/kw :about}
                              {:FAKE 2, :module/kw :about}
                              {:FAKE 3, :module/kw :about}]}
