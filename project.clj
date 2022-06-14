@@ -1,4 +1,4 @@
-(defproject org.xilk/lein-template.xp-web-app "20220614-6"
+(defproject org.xilk/lein-template.xp-web-app "20220614-7"
   :description (str "A Leiningen template that creates experimental web app "
                     "projects for R&D on delivering high-value user features, "
                     "like progressive enhancement and internationalization, "

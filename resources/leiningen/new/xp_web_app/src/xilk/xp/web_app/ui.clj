@@ -4,7 +4,6 @@
    [garden.core :as garden]
    [hiccup2.core :as h2]
    [reitit.core :as r]
-   [ring.util.response :as rr]
    [tongue.core :as tongue]
    [xilk.xp.web-app.ui.internal.css :as css]
    [xilk.xp.web-app.ui.internal.props :as props]
@@ -416,6 +415,38 @@
 
 ;;;; Response Construction
 
+(defn response
+  "Returns a Ring response. `body` is first arg for use in threading macros.
+  Use for non-OK responses or uncommon content types; otherwise, use convenience
+  functions like [[response-ok-css]] and [[response-ok-html]].
+
+  **Arguments**
+
+  * `body`: a `String` specifying the body of the response.
+
+  * `status`: an integer specifying the status code of the response.
+
+  * `content-type` (optional): a `String` specifying the Content Type header of
+     the response.
+
+  **Examples**
+
+  ```clj
+  ;; Return a 404 not found response from an error screen handler.
+  (defn handler [req]
+    (-> req
+        (create-props {:screen.html.head.title/str-kw ::not-found-title})
+        (theme/render html)
+        (response 404 \"text/html\")))"
+  ([body status]
+   {:status status
+    :headers {}
+    :body body})
+  ([body status content-type]
+   {:status status
+    :headers {"Content-Type" content-type}
+    :body body}))
+
 (defn response-ok-css
   "Returns a Ring response with status 200, Content-Type `text-css`, and body.
 
@@ -435,9 +466,7 @@
         css
         response-ok-css))"
   [body]
-  (-> body
-      rr/response
-      (rr/content-type "text/css")))
+  (response body 200 "text/css"))
 
 (defn response-ok-html
   "Returns a Ring response with status 200, Content-Type `text-html`, and body.
@@ -458,6 +487,4 @@
         (theme/render [:p \"Welcome\"])
         response-ok-html))"
   [body]
-  (-> body
-      rr/response
-      (rr/content-type "text/html")))
+  (response body 200 "text/html"))
