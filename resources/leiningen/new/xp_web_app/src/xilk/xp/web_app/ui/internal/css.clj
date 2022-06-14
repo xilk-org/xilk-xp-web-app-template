@@ -95,35 +95,39 @@
       :else %)
    rules))
 
+(defn xilk-html-attr-map->hiccup [attr-m]
+  (if-let [class-val (:class attr-m)]
+    (cond
+      (sequential? class-val)
+      (assoc attr-m :class (->> class-val
+                                flatten
+                                (map (fn [cls]
+                                       (if (keyword? cls)
+                                         (css-class-str cls)
+                                         cls)))))
+
+      (keyword? class-val)
+      (assoc attr-m :class (css-class-str class-val))
+
+      :else
+      attr-m)
+    attr-m))
+
 (defn transform-qualified-sel-kws-for-hiccup-html-compilation
   "Returns hiccup with qualified selector kws transformed for compilation."
   [hiccup]
   (if (sequential? hiccup)
-    (mapv (fn [form]
-            (cond
-              (sequential? form)
-              ;; FIXME: optimize to prevent stack overflow
-              (transform-qualified-sel-kws-for-hiccup-html-compilation form)
-
-              (map? form)
-              (if-let [class-val (:class form)]
+    (let [map-fn (if (vector? hiccup) mapv map)]
+      (map-fn (fn [form]
                 (cond
-                  (sequential? class-val)
-                  (assoc form :class (->> class-val
-                                          flatten
-                                          (map (fn [cls]
-                                                 (if (keyword? cls)
-                                                   (css-class-str cls)
-                                                   cls)))))
+                  (sequential? form)
+                  ;; FIXME: optimize to prevent stack overflow
+                  (transform-qualified-sel-kws-for-hiccup-html-compilation form)
 
-                  (keyword? class-val)
-                  (assoc form :class (css-class-str class-val))
+                  (map? form)
+                  (xilk-html-attr-map->hiccup form)
 
                   :else
-                  form)
-                form)
-
-              :else
-              form))
-          hiccup)
+                  form))
+              hiccup))
     hiccup))

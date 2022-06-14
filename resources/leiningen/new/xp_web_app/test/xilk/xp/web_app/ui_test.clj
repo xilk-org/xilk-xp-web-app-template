@@ -58,6 +58,12 @@
                         [:h2 "b"]
                         [:h3 "c"])))))
 
+(deftest html__with-multiple-unnested-forms-including-for-seq__returns-html
+  (is (= "<h1>a</h1><p>1</p><p>2</p><p>3</p>"
+         (str (sut/html [:h1 "a"]
+                        (for [x (range 1 4)]
+                          [:p x]))))))
+
 ;;;; dangerous-unescapable-string
 
 (deftest dangerous-unescapable-string__with-string__returns-raw-string-object
