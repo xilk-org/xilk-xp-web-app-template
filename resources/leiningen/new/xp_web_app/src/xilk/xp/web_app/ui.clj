@@ -293,12 +293,11 @@
 
 ;;;; String Localization
 
-(def ^{:arglists '([lang key] [lang key arg] [lang key & args])
-       :see-also ["init!"]}
-  loc-str
-  "Returns a localized `String` defined in the `app-dicts` set by [[init!]].
-  Impure function (return value variation): depends on global state. NOTE: use
-  this function only for `String`s which are not automatically localized by
+#_{:clj-kondo/ignore [:shadowed-var]}
+(defn loc-str
+  "Returns a localized `String` defined in `app-dicts` ([[init!]]) or `dicts`.
+  Impure function (return value variation): may depend on global state. NOTE:
+  use this function only for `String`s which are not automatically localized by
   app infrastructure.
 
   May return a `String` localized in different language if no match is found for
@@ -306,7 +305,7 @@
   1. zh-Hans-CN
   2. zh-Hans
   3. zh
-  4. the fallback language (defined in the `app-dicts` set by [[init]])
+  4. the fallback language (defined in `app-dicts`, or optionally `dicts`)
 
   Returns a \"Missing key\" error string if no match is found at all.
 
@@ -314,14 +313,19 @@
 
   * `lang`: A keyword specifying the IETF language tag for localization.
 
-  * `key`: A keyword specifying the entry in `app-dicts` to localize. Often an
-    auto-resolved keyword, scoped to a screen or component.
+  * `key`: A keyword specifying the entry in `app-dicts` (or optionally `dicts`)
+    to localize. Often an auto-resolved keyword, scoped to a screen or
+    component.
 
   * `arg` (optional): Either a `String` for positional substitution, or a map
     for named substitution, in template strings or localization functions.
 
   * `args` (optional): `String`s for positional substitution in template strings
     or localization functions.
+
+  * `dicts` (optional): Dictionaries to use instead of `app-dicts`. Must be in
+    [Tongue](https://github.com/tonsky/tongue) format. Use for localizable
+    strings from sources outside the app code (databases, third parties, etc.).
 
   **Examples**
 
@@ -343,7 +347,19 @@
 
   [[init!]]
   [Tongue](https://github.com/tonsky/tongue)"
-  #'state/loc-str-fn)
+  {:arglists '([lang key] [lang key arg] [lang key & args]
+               [dicts lang key] [dicts lang key arg] [dicts lang key & args])
+   :see-also ["init!"]}
+  ([lang key]
+   (#'state/loc-str-fn lang key))
+  ([lang key x]
+   (if (map? lang)
+     (#'tongue/translate lang key x)
+     (#'state/loc-str-fn lang key x)))
+  ([lang key x & args]
+   (if (map? lang)
+     (apply #'tongue/translate lang key x args)
+     (apply #'state/loc-str-fn lang key args))))
 
 ;;;; Props Construction
 
@@ -390,7 +406,7 @@
         html-doc))
   ```"
   ([req]
-   (create-props req {}))
+   (create-props req nil))
   ([req overriding-props]
    (-> req
        props/props-from-req
