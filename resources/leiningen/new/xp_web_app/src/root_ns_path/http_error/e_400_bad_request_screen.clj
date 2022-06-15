@@ -27,6 +27,6 @@
 
 (defn handler [req]
   (-> req
-      (x/create-props {:screen.html.head.title/str-kw ::bad-request-title})
+      (x/create-props {:screen.html.head/title ::bad-request-title})
       (theme/render html)
       (x/response 400 "text/html")))

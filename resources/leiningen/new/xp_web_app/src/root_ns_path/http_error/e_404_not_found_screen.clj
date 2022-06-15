@@ -27,6 +27,6 @@
 
 (defn handler [req]
   (-> req
-      (x/create-props {:screen.html.head.title/str-kw ::not-found-title})
+      (x/create-props {:screen.html.head/title ::not-found-title})
       (theme/render html)
       (x/response 404 "text/html")))

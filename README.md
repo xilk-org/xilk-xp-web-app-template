@@ -79,7 +79,7 @@ components.
 
 (def get-handler [req]
   (-> req
-      (x/create-props {:screen.html.head.title/str-kw ::hello-title})
+      (x/create-props {:screen.html.head/title ::hello-title})
       ;; Query databases, call API's, and add any props here.
       ;; Then let theme/screen-resp handle the routine stuff:
       ;; 1. Extract props from the request.

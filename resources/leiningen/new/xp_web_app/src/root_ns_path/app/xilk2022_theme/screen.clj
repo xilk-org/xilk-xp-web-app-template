@@ -1,5 +1,6 @@
 (ns {{root-ns}}.app.xilk2022-theme.screen
   (:require
+   [clojure.string :as str]
    [{{root-ns}}.app.xilk2022-theme.colors :refer [dk-bg lt-bg]]
    [{{root-ns}}.app.xilk2022-theme.css-reset :refer [css-reset]]
    [{{root-ns}}.app.xilk2022-theme.footer-comp :refer [footer] :as footer]
@@ -182,13 +183,23 @@
 
 ;;;; Render Helpers
 
-(defn add-title [{:app/keys [lang] :as props} str-kw]
-  (assoc props
-         :html.doc/title (if (some? str-kw)
-                           (x/loc-str lang
-                                      ::html-doc-title-template
-                                      (x/loc-str lang str-kw))
-                           (x/loc-str lang ::html-doc-title-generic))))
+(defn title [lang title-fragment]
+  (cond
+    (string? title-fragment)
+    (str/replace (::html-doc-title-template strings)
+                 "{1}"
+                 title-fragment)
+
+    (keyword? title-fragment)
+    (->> title-fragment
+         (x/loc-str lang)
+         (x/loc-str lang ::html-doc-title-template))
+
+    :else
+    (x/loc-str lang ::html-doc-title-generic)))
+
+(defn add-title [{:app/keys [lang] :as props} title-fragment]
+  (assoc props :html.doc/title (title lang title-fragment)))
 
 (def internal-stylesheet-el
   [:style internal-css-to-reduce-screen-flash-on-load])

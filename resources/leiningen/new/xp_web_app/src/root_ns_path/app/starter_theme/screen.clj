@@ -1,5 +1,6 @@
 (ns {{root-ns}}.app.starter-theme.screen
   (:require
+   [clojure.string :as str]
    [hiccup.page :as hp]
    [xilk.xp.web-app.ui :as x]))
 
@@ -47,13 +48,23 @@
 
 ;;;; Render Helpers
 
-(defn add-title [{:app/keys [lang] :as props} str-kw]
-  (assoc props
-         :html.doc/title (if (some? str-kw)
-                           (x/loc-str lang
-                                      ::html-doc-title-template
-                                      (x/loc-str lang str-kw))
-                           (x/loc-str lang ::html-doc-title-generic))))
+(defn title [lang title-fragment]
+  (cond
+    (string? title-fragment)
+    (str/replace (::html-doc-title-template strings)
+                 "{1}"
+                 title-fragment)
+
+    (keyword? title-fragment)
+    (->> title-fragment
+         (x/loc-str lang)
+         (x/loc-str lang ::html-doc-title-template))
+
+    :else
+    (x/loc-str lang ::html-doc-title-generic)))
+
+(defn add-title [{:app/keys [lang] :as props} title-fragment]
+  (assoc props :html.doc/title (title lang title-fragment)))
 
 (defn prepend-html-head-added-els
   [props el]

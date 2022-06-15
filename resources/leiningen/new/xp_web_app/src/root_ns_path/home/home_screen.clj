@@ -129,7 +129,7 @@
 
 (defn get-handler [req]
   (-> req
-      (x/create-props {:screen.html.head.title/str-kw ::home-title
+      (x/create-props {:screen.html.head/title ::home-title
                        :screen.html.head/added-els [[:meta {:name "description"
                                                             :content "FIXME"}]]
                        :screen.main/to-container-edges? true})

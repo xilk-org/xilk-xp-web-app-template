@@ -435,7 +435,7 @@
   ;; Return a 404 not found response from an error screen handler.
   (defn handler [req]
     (-> req
-        (create-props {:screen.html.head.title/str-kw ::not-found-title})
+        (create-props {:screen.html.head/title ::not-found-title})
         (theme/render html)
         (response 404 \"text/html\")))"
   ([body status]

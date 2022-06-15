@@ -27,6 +27,6 @@
 
 (defn handler [req]
   (-> req
-      (x/create-props {:screen.html.head.title/str-kw ::not-acceptable-title})
+      (x/create-props {:screen.html.head/title ::not-acceptable-title})
       (theme/render html)
       (x/response 406 "text/html")))

@@ -28,6 +28,6 @@
 
 (defn handler [req]
   (-> req
-      (x/create-props {:screen.html.head.title/str-kw ::forbidden-title})
+      (x/create-props {:screen.html.head/title ::forbidden-title})
       (theme/render html)
       (x/response 403 "text/html")))

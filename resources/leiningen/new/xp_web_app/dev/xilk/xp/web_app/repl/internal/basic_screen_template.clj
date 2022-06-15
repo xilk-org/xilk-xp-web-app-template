@@ -37,7 +37,7 @@
                (str s "
 (defn " (str hs) " [req]
   (-> req
-      (x/create-props {:screen.html.head.title/str-kw ::" screen-title-kw-name "})
+      (x/create-props {:screen.html.head/title ::" screen-title-kw-name "})
       (theme/screen-resp html)))\n"))
              ""
              handler-syms))))

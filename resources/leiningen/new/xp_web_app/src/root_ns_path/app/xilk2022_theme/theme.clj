@@ -35,10 +35,10 @@
       elements in Hiccup syntax, to be added to the screen's `<head>` element.
       Example: `[[:meta {:name \"description\" :content \"Search page\"}]]`.
 
-    - `:screen.html.head.title/str-kw`: A keyword specifying the `String` to
-      be used in the document title for the screen. Often an auto-resolved
-      keyword, scoped to the screen. If not specified, the theme applies its
-      default title.
+    - `:screen.html.head/title`: Either a keyword specifying the localized
+      `String`, or the `String` literal, to be used in the document title for
+      the screen. Often an auto-resolved keyword, scoped to the screen. If not
+      specified, the theme applies its default title.
 
     - `:screen.main/to-container-edges?`: A boolean specifying whether the
       content returned by `content-fn` is rendered fully to the edges of its
@@ -59,7 +59,7 @@
   ;; Render in an error screen handler.
   (defn handler [req]
     (-> req
-        (x/create-props {:screen.html.head.title/str-kw ::not-found-title})
+        (x/create-props {:screen.html.head/title ::not-found-title})
         (theme/render html)
         (x/response 404 \"text/html\")))
   ```
@@ -69,11 +69,11 @@
   [[screen-resp]]
   [[xilk.xp.web-app.ui/html]]"
   [{:keys [screen.html.head/_added-els
-           screen.html.head.title/str-kw
+           screen.html.head/title
            screen.main/_to-container-edges?] :as props}
    content-fn]
   (-> props
-      (screen/add-title str-kw)
+      (screen/add-title title)
       (screen/prepend-html-head-added-els screen/internal-stylesheet-el)
       (screen/add-main-content content-fn)
       screen/html-doc))
@@ -89,10 +89,10 @@
       elements in Hiccup syntax, to be added to the screen's `<head>` element.
       Example: `[[:meta {:name \"description\" :content \"Search page\"}]]`.
 
-    - `:screen.html.head.title/str-kw`: A keyword specifying the `String` to
-      be used in the document title for the screen. Often an auto-resolved
-      keyword, scoped to the screen. If not specified, the theme applies its
-      default title.
+    - `:screen.html.head/title`: Either a keyword specifying the localized
+      `String`, or the `String` literal, to be used in the document title for
+      the screen. Often an auto-resolved keyword, scoped to the screen. If not
+      specified, the theme applies its default title.
 
     - `:screen.main/to-container-edges?`: A boolean specifying whether the
       content returned by `content-fn` is rendered fully to the edges of its
@@ -113,7 +113,7 @@
   ;; Render and return a response in a screen handler.
   (defn get-handler [req]
     (-> req
-        (x/create-props {:screen.html.head.title/str-kw ::screen-title})
+        (x/create-props {:screen.html.head/title ::screen-title})
         ;; Query databases, call API's, and add any props here.
         (theme/screen-resp html)))
   ```
@@ -122,7 +122,7 @@
 
   [[xilk.xp.web-app.ui/html]]"
   [{:keys [screen.html.head/_added-els
-           screen.html.head.title/_str-kw
+           screen.html.head/_title
            screen.main/_to-container-edges?] :as props}
    content-fn]
   (-> props

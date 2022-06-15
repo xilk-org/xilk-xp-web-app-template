@@ -27,7 +27,6 @@
 
 (defn handler [req]
   (-> req
-      (x/create-props {:screen.html.head.title/str-kw
-                       ::method-not-allowed-title})
+      (x/create-props {:screen.html.head/title ::method-not-allowed-title})
       (theme/render html)
       (x/response 405 "text/html")))
