@@ -26,7 +26,7 @@
                   :content "width=device-width, initial-scale=1"}]
           [:title (:html.doc/title props)]
           [:link {:rel :stylesheet
-                  :href "/xilk2022.css"
+                  :href (x/route-path :stylesheet/xilk2022)
                   :type "text/css"}]]
          added-els)))
 

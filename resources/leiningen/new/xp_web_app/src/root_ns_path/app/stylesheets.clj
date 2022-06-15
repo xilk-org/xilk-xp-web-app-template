@@ -52,5 +52,7 @@
 ;;;; Routes
 
 (def routes
-  [["/xilk2022.css" {:get xilk2022-theme-ss-dev-handler}]
-   ["/starter.css" {:get starter-theme-ss-dev-handler}]])
+  [["/xilk2022.css" {:name :stylesheet/xilk2022
+                     :get xilk2022-theme-ss-dev-handler}]
+   ["/starter.css" {:name :stylesheet/starter
+                    :get starter-theme-ss-dev-handler}]])

@@ -16,7 +16,7 @@
                   :content "width=device-width, initial-scale=1"}]
           [:title (:html.doc/title props)]
           [:link {:rel :stylesheet
-                  :href "/starter.css"
+                  :href (x/route-path :stylesheet/starter)
                   :type "text/css"}]]
          added-els)))
 
