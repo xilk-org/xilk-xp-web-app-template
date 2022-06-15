@@ -1,7 +1,8 @@
 (ns {{root-ns}}.http-error.e-400-bad-request-screen
   (:require
    [{{root-ns}}.app.default-theme.theme :as theme]
-   [{{root-ns}}.http-error.error-screen-template :as template]))
+   [{{root-ns}}.http-error.error-screen-template :as template]
+   [xilk.xp.web-app.ui :as x]))
 
 ;;;; View
 
@@ -25,9 +26,7 @@
 ;;;; Controller
 
 (defn handler [req]
-  {:status 400
-   :headers {"Content-Type" "text/html"}
-   :body (theme/render {:content-fn html
-                        :props {:screen.html.head.title/str-kw
-                                ::bad-request-title}
-                        :req req})})
+  (-> req
+      (x/create-props {:screen.html.head.title/str-kw ::bad-request-title})
+      (theme/render html)
+      (x/response 400 "text/html")))

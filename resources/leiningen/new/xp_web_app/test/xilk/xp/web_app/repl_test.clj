@@ -314,7 +314,7 @@
           :unit.route/methods [:get]
           :unit.route/path "/mod/scr"
           :unit/src
-          "(ns {{root-ns}}.mod.scr-screen\n  \"Scr screen view and controller.\"\n  (:require\n   [{{root-ns}}.app.default-theme.theme :as theme]\n   [garden.units :refer [px]]\n   [xilk.xp.web-app.ui :as x]))\n\n;;;; View\n\n(defn html [props]\n  (x/html\n   [:h1 {:class ::heading}\n        (::scr props)]\n   [:p (::FIXME props)]))\n\n(def css\n  (x/css\n   [::heading {:border [[(px 2) :solid]]}]))\n\n(def strings\n  {::scr-title \"Scr\"\n   ::scr \"Scr\"\n   ::FIXME \"FIXME\"})\n\n;;;; Controller\n\n(defn get-handler [req]\n  (-> {:content-fn html\n       :props {:screen.html.head.title/str-kw ::scr-title}\n       :req req}\n      theme/screen-resp))\n"
+          "(ns {{root-ns}}.mod.scr-screen\n  \"Scr screen view and controller.\"\n  (:require\n   [{{root-ns}}.app.default-theme.theme :as theme]\n   [garden.units :refer [px]]\n   [xilk.xp.web-app.ui :as x]))\n\n;;;; View\n\n(defn html [props]\n  (x/html\n   [:h1 {:class ::heading}\n        (::scr props)]\n   [:p (::FIXME props)]))\n\n(def css\n  (x/css\n   [::heading {:border [[(px 2) :solid]]}]))\n\n(def strings\n  {::scr-title \"Scr\"\n   ::scr \"Scr\"\n   ::FIXME \"FIXME\"})\n\n;;;; Controller\n\n(defn get-handler [req]\n  (-> req\n      (x/create-props {:screen.html.head.title/str-kw ::scr-title})\n      (theme/screen-resp html)))\n"
           :unit/strings-sym 'scr-screen/strings
           :unit/css-sym 'scr-screen/css
           :unit/template-fn basic-screen/create-data}
@@ -338,7 +338,7 @@
           :unit.route/methods [:post]
           :unit.route/path "/mod/scr"
           :unit/src
-          "(ns {{root-ns}}.mod.scr-screen\n  \"Scr screen view and controller.\"\n  (:require\n   [{{root-ns}}.app.default-theme.theme :as theme]\n   [garden.units :refer [px]]\n   [xilk.xp.web-app.ui :as x]))\n\n;;;; View\n\n(defn html [props]\n  (x/html\n   [:h1 {:class ::heading}\n        (::scr props)]\n   [:p (::FIXME props)]))\n\n(def css\n  (x/css\n   [::heading {:border [[(px 2) :solid]]}]))\n\n(def strings\n  {::scr-title \"Scr\"\n   ::scr \"Scr\"\n   ::FIXME \"FIXME\"})\n\n;;;; Controller\n\n(defn post-handler [req]\n  (-> {:content-fn html\n       :props {:screen.html.head.title/str-kw ::scr-title}\n       :req req}\n      theme/screen-resp))\n"
+          "(ns {{root-ns}}.mod.scr-screen\n  \"Scr screen view and controller.\"\n  (:require\n   [{{root-ns}}.app.default-theme.theme :as theme]\n   [garden.units :refer [px]]\n   [xilk.xp.web-app.ui :as x]))\n\n;;;; View\n\n(defn html [props]\n  (x/html\n   [:h1 {:class ::heading}\n        (::scr props)]\n   [:p (::FIXME props)]))\n\n(def css\n  (x/css\n   [::heading {:border [[(px 2) :solid]]}]))\n\n(def strings\n  {::scr-title \"Scr\"\n   ::scr \"Scr\"\n   ::FIXME \"FIXME\"})\n\n;;;; Controller\n\n(defn post-handler [req]\n  (-> req\n      (x/create-props {:screen.html.head.title/str-kw ::scr-title})\n      (theme/screen-resp html)))\n"
           :unit/strings-sym 'scr-screen/strings
           :unit/css-sym 'scr-screen/css
           :unit/template-fn basic-screen/create-data}
@@ -364,7 +364,7 @@
           :unit.route/methods [:get :post]
           :unit.route/path "/mod/scr"
           :unit/src
-          "(ns {{root-ns}}.mod.scr-screen\n  \"Scr screen view and controller.\"\n  (:require\n   [{{root-ns}}.app.default-theme.theme :as theme]\n   [garden.units :refer [px]]\n   [xilk.xp.web-app.ui :as x]))\n\n;;;; View\n\n(defn html [props]\n  (x/html\n   [:h1 {:class ::heading}\n        (::scr props)]\n   [:p (::FIXME props)]))\n\n(def css\n  (x/css\n   [::heading {:border [[(px 2) :solid]]}]))\n\n(def strings\n  {::scr-title \"Scr\"\n   ::scr \"Scr\"\n   ::FIXME \"FIXME\"})\n\n;;;; Controller\n\n(defn get-handler [req]\n  (-> {:content-fn html\n       :props {:screen.html.head.title/str-kw ::scr-title}\n       :req req}\n      theme/screen-resp))\n\n(defn post-handler [req]\n  (-> {:content-fn html\n       :props {:screen.html.head.title/str-kw ::scr-title}\n       :req req}\n      theme/screen-resp))\n"
+          "(ns {{root-ns}}.mod.scr-screen\n  \"Scr screen view and controller.\"\n  (:require\n   [{{root-ns}}.app.default-theme.theme :as theme]\n   [garden.units :refer [px]]\n   [xilk.xp.web-app.ui :as x]))\n\n;;;; View\n\n(defn html [props]\n  (x/html\n   [:h1 {:class ::heading}\n        (::scr props)]\n   [:p (::FIXME props)]))\n\n(def css\n  (x/css\n   [::heading {:border [[(px 2) :solid]]}]))\n\n(def strings\n  {::scr-title \"Scr\"\n   ::scr \"Scr\"\n   ::FIXME \"FIXME\"})\n\n;;;; Controller\n\n(defn get-handler [req]\n  (-> req\n      (x/create-props {:screen.html.head.title/str-kw ::scr-title})\n      (theme/screen-resp html)))\n\n(defn post-handler [req]\n  (-> req\n      (x/create-props {:screen.html.head.title/str-kw ::scr-title})\n      (theme/screen-resp html)))\n"
           :unit/strings-sym 'scr-screen/strings
           :unit/css-sym 'scr-screen/css
           :unit/template-fn basic-screen/create-data}
@@ -416,7 +416,7 @@
           :unit.route/methods [:get]
           :unit.route/path "/mod/scr"
           :unit/src
-          "(ns {{root-ns}}.mod.scr-screen\n  \"Scr screen view and controller.\"\n  (:require\n   [{{root-ns}}.app.casual-theme.theme :as theme]\n   [garden.units :refer [px]]\n   [xilk.xp.web-app.ui :as x]))\n\n;;;; View\n\n(defn html [props]\n  (x/html\n   [:h1 {:class ::heading}\n        (::scr props)]\n   [:p (::FIXME props)]))\n\n(def css\n  (x/css\n   [::heading {:border [[(px 2) :solid]]}]))\n\n(def strings\n  {::scr-title \"Scr\"\n   ::scr \"Scr\"\n   ::FIXME \"FIXME\"})\n\n;;;; Controller\n\n(defn get-handler [req]\n  (-> {:content-fn html\n       :props {:screen.html.head.title/str-kw ::scr-title}\n       :req req}\n      theme/screen-resp))\n"
+          "(ns {{root-ns}}.mod.scr-screen\n  \"Scr screen view and controller.\"\n  (:require\n   [{{root-ns}}.app.casual-theme.theme :as theme]\n   [garden.units :refer [px]]\n   [xilk.xp.web-app.ui :as x]))\n\n;;;; View\n\n(defn html [props]\n  (x/html\n   [:h1 {:class ::heading}\n        (::scr props)]\n   [:p (::FIXME props)]))\n\n(def css\n  (x/css\n   [::heading {:border [[(px 2) :solid]]}]))\n\n(def strings\n  {::scr-title \"Scr\"\n   ::scr \"Scr\"\n   ::FIXME \"FIXME\"})\n\n;;;; Controller\n\n(defn get-handler [req]\n  (-> req\n      (x/create-props {:screen.html.head.title/str-kw ::scr-title})\n      (theme/screen-resp html)))\n"
           :unit/strings-sym 'scr-screen/strings
           :unit/css-sym 'scr-screen/css
           :unit/template-fn basic-screen/create-data}
@@ -510,7 +510,7 @@
             :unit.route/methods [:get]
             :unit.route/path "/mod/scr"
             :unit/src
-            "(ns {{root-ns}}.mod.scr-screen\n  \"Scr screen view and controller.\"\n  (:require\n   [{{root-ns}}.app.default-theme.theme :as theme]\n   [garden.units :refer [px]]\n   [xilk.xp.web-app.ui :as x]))\n\n;;;; View\n\n(defn html [props]\n  (x/html\n   [:h1 {:class ::heading}\n        (::scr props)]\n   [:p (::FIXME props)]))\n\n(def css\n  (x/css\n   [::heading {:border [[(px 2) :solid]]}]))\n\n(def strings\n  {::scr-title \"Scr\"\n   ::scr \"Scr\"\n   ::FIXME \"FIXME\"})\n\n;;;; Controller\n\n(defn get-handler [req]\n  (-> {:content-fn html\n       :props {:screen.html.head.title/str-kw ::scr-title}\n       :req req}\n      theme/screen-resp))\n"
+            "(ns {{root-ns}}.mod.scr-screen\n  \"Scr screen view and controller.\"\n  (:require\n   [{{root-ns}}.app.default-theme.theme :as theme]\n   [garden.units :refer [px]]\n   [xilk.xp.web-app.ui :as x]))\n\n;;;; View\n\n(defn html [props]\n  (x/html\n   [:h1 {:class ::heading}\n        (::scr props)]\n   [:p (::FIXME props)]))\n\n(def css\n  (x/css\n   [::heading {:border [[(px 2) :solid]]}]))\n\n(def strings\n  {::scr-title \"Scr\"\n   ::scr \"Scr\"\n   ::FIXME \"FIXME\"})\n\n;;;; Controller\n\n(defn get-handler [req]\n  (-> req\n      (x/create-props {:screen.html.head.title/str-kw ::scr-title})\n      (theme/screen-resp html)))\n"
             :unit/strings-sym 'scr-screen/strings
             :unit/css-sym 'scr-screen/css
             :unit/template-fn basic-screen/create-data}]}
@@ -542,7 +542,7 @@
             :unit.route/methods [:get]
             :unit.route/path "/mod/scr"
             :unit/src
-            "(ns {{root-ns}}.mod.scr-screen\n  \"Scr screen view and controller.\"\n  (:require\n   [{{root-ns}}.app.default-theme.theme :as theme]\n   [garden.units :refer [px]]\n   [xilk.xp.web-app.ui :as x]))\n\n;;;; View\n\n(defn html [props]\n  (x/html\n   [:h1 {:class ::heading}\n        (::scr props)]\n   [:p (::FIXME props)]))\n\n(def css\n  (x/css\n   [::heading {:border [[(px 2) :solid]]}]))\n\n(def strings\n  {::scr-title \"Scr\"\n   ::scr \"Scr\"\n   ::FIXME \"FIXME\"})\n\n;;;; Controller\n\n(defn get-handler [req]\n  (-> {:content-fn html\n       :props {:screen.html.head.title/str-kw ::scr-title}\n       :req req}\n      theme/screen-resp))\n"
+            "(ns {{root-ns}}.mod.scr-screen\n  \"Scr screen view and controller.\"\n  (:require\n   [{{root-ns}}.app.default-theme.theme :as theme]\n   [garden.units :refer [px]]\n   [xilk.xp.web-app.ui :as x]))\n\n;;;; View\n\n(defn html [props]\n  (x/html\n   [:h1 {:class ::heading}\n        (::scr props)]\n   [:p (::FIXME props)]))\n\n(def css\n  (x/css\n   [::heading {:border [[(px 2) :solid]]}]))\n\n(def strings\n  {::scr-title \"Scr\"\n   ::scr \"Scr\"\n   ::FIXME \"FIXME\"})\n\n;;;; Controller\n\n(defn get-handler [req]\n  (-> req\n      (x/create-props {:screen.html.head.title/str-kw ::scr-title})\n      (theme/screen-resp html)))\n"
             :unit/strings-sym 'scr-screen/strings
             :unit/css-sym 'scr-screen/css
             :unit/template-fn basic-screen/create-data}]}

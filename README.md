@@ -78,9 +78,8 @@ components.
    ::sign-in     "Sign in to see more..."})
 
 (def get-handler [req]
-  (-> {:content-fn html
-       :props {:screen.html.head.title/str-kw ::hello-title}
-       :req req}
+  (-> req
+      (x/create-props {:screen.html.head.title/str-kw ::hello-title})
       ;; Query databases, call API's, and add any props here.
       ;; Then let theme/screen-resp handle the routine stuff:
       ;; 1. Extract props from the request.
@@ -88,7 +87,7 @@ components.
       ;; 3. Call the content function with the merged props.
       ;; 4. Lay out the content in an HTML document with header, footer, etc.
       ;; 5. Wrap the HTML document in a Ring response.
-      theme/screen-resp))
+      (theme/screen-resp html)))
 ```
 ```clj
 ;; Example component

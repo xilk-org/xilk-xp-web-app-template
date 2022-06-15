@@ -128,10 +128,9 @@
 ;;;; Controller
 
 (defn get-handler [req]
-  (-> {:content-fn html
-       :props {:screen.html.head.title/str-kw   ::home-title
-               :screen.html.head/added-els      [[:meta {:name "description"
-                                                         :content "FIXME"}]]
-               :screen.main/to-container-edges? true}
-       :req req}
-      theme/screen-resp))
+  (-> req
+      (x/create-props {:screen.html.head.title/str-kw ::home-title
+                       :screen.html.head/added-els [[:meta {:name "description"
+                                                            :content "FIXME"}]]
+                       :screen.main/to-container-edges? true})
+      (theme/screen-resp html)))

@@ -36,10 +36,9 @@
 "    (reduce (fn [s hs]
                (str s "
 (defn " (str hs) " [req]
-  (-> {:content-fn html
-       :props {:screen.html.head.title/str-kw ::" screen-title-kw-name "}
-       :req req}
-      theme/screen-resp))\n"))
+  (-> req
+      (x/create-props {:screen.html.head.title/str-kw ::" screen-title-kw-name "})
+      (theme/screen-resp html)))\n"))
              ""
              handler-syms))))
 

@@ -1,7 +1,8 @@
 (ns {{root-ns}}.http-error.e-404-not-found-screen
   (:require
    [{{root-ns}}.app.default-theme.theme :as theme]
-   [{{root-ns}}.http-error.error-screen-template :as template]))
+   [{{root-ns}}.http-error.error-screen-template :as template]
+   [xilk.xp.web-app.ui :as x]))
 
 ;;;; View
 
@@ -25,9 +26,7 @@
 ;;;; Controller
 
 (defn handler [req]
-  {:status 404
-   :headers {"Content-Type" "text/html"}
-   :body (theme/render {:content-fn html
-                        :props {:screen.html.head.title/str-kw
-                                ::not-found-title}
-                        :req req})})
+  (-> req
+      (x/create-props {:screen.html.head.title/str-kw ::not-found-title})
+      (theme/render html)
+      (x/response 404 "text/html")))
