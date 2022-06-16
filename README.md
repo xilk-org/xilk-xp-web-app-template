@@ -209,7 +209,7 @@ across projects or with other developers.
 3. Create a new project and change directory.
    ```sh
    cd web-app-template
-   lein new org.xilk/xp-web-app my-project-name --to-dir ../my-project-dir
+   lein new xp-web-app my-project-name --to-dir ../my-project-dir
    cd ../my-project-dir
    ```
 
