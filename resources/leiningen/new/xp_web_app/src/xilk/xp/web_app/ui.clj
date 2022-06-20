@@ -358,7 +358,7 @@
   ([lang key x & args]
    (if (map? lang)
      (apply #'tongue/translate lang key x args)
-     (apply #'state/loc-str-fn lang key args))))
+     (apply #'state/loc-str-fn lang key x args))))
 
 ;;;; Props Construction
 
