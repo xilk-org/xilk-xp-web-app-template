@@ -42,15 +42,17 @@
      :port (or (some-> (System/getenv) (get "PORT") parse-long)
                80)
 
-     :server {:start (fn http-server-start
-                       [{:keys [app-handler options] :as _conf} _ _]
-                       (rj/run-jetty app-handler options))
-              :stop  (fn http-server-stop
-                       [_ instance _]
-                       (.stop instance))
-              :conf  {:app-handler (ds/ref :handler)
-                      :options     {:port (ds/ref :port)
-                                    :join? false}}}}}})
+     :server #::ds{:start (fn http-server-start
+                            {{=<% %>=}}
+                            [{{:keys [app-handler options]} ::ds/config}]
+                            <%={{ }}=%>
+                            (rj/run-jetty app-handler options))
+                   :stop  (fn http-server-stop
+                            [{::ds/keys [instance]}]
+                            (.stop instance))
+                   :config  {:app-handler (ds/local-ref [:handler])
+                             :options     {:port (ds/local-ref [:port])
+                                           :join? false}}}}}})
 
 (defmethod ds/named-system :prod
   [_]

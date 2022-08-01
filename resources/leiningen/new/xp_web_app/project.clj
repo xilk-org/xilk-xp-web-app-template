@@ -3,7 +3,7 @@
   ; :url "http://example.com/FIXME"
   :license {:name "None (proprietary; all rights reserved)"}
   :min-lein-version "2.9.8"
-  :dependencies [[club.donutpower/system "0.0.127"] ;; System
+  :dependencies [[club.donutpower/system "0.0.165"] ;; System
                  [garden "1.3.10"] ;; CSS
                  [hiccup "2.0.0-alpha2"] ;; HTML
                  [metosin/reitit-core "0.5.18"] ;; Router
@@ -21,9 +21,7 @@
   :xilk.template/url "{{template-url}}"
   :xilk.template/version "{{template-version}}"
 
-  :profiles {:dev {:dependencies [;; TODO: remove once donut includes dep
-                                  [org.clojure/tools.namespace "1.3.0"]
-                                  [rewrite-clj "1.0.767-alpha"]]
+  :profiles {:dev {:dependencies [[rewrite-clj "1.0.767-alpha"]]
                    :source-paths ["dev"]}
              :uberjar {:aot :all}}
 
